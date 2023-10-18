@@ -23,11 +23,11 @@ public class User {
     private String surname;
 
     @NotNull(message = "No gender provided.")
-    private Character gender;
+    @Size(min = 1, max = 1, message = "Gender must be a single character.")
+    private String gender;
 
     @NotNull(message = "No date provided.")
     @Size(max = 250, message = "Date error: Too many characters.")
     private String date;
-
 
 }

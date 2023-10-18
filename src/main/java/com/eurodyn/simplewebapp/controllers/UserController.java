@@ -31,7 +31,19 @@ public class UserController {
     @GetMapping(path = "/user/{id}")
     public @ResponseBody ResponseEntity<Optional<User>> getUserById(@PathVariable Long id)
                                                                     throws UserNotFoundException {
-        return new ResponseEntity<>(userService.userById(id), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/user/{id}")
+    public @ResponseBody ResponseEntity<Optional<User>> deleteUserById(@PathVariable Long id)
+                                                                       throws UserNotFoundException {
+        return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/user/{id}")
+    public @ResponseBody ResponseEntity<Optional<User>> updateUserById(@Valid @RequestBody User user, @PathVariable Long id)
+                                                                                    throws UserNotFoundException {
+        return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
     }
 
 }
