@@ -1,5 +1,6 @@
 package com.eurodyn.simplewebapp.services;
 
+import com.eurodyn.simplewebapp.exceptions.UserNotFoundException;
 import com.eurodyn.simplewebapp.models.User;
 import com.eurodyn.simplewebapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> userById(Long id) {
-        return userRepository.findById(id);
+    public Optional<User> userById(Long id) throws UserNotFoundException {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isPresent())
+            return user;
+        else
+            throw UserNotFoundException.createWith(id);
     }
 
-    public void addUser(User user) {
-        userRepository.save(user);
+    public User addUser(User user) {
+        return userRepository.save(user);
     }
 
 }
