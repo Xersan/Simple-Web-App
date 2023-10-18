@@ -18,19 +18,32 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> userById(Long id) throws UserNotFoundException {
-        Optional<User> user = userRepository.findById(id);
-
-        if (user.isPresent())
-            return user;
-        else
-            throw UserNotFoundException.createWith(id);
-    }
-
     public User addUser(User user) {
         return userRepository.save(user);
     }
 
+    public Optional<User> getUser(Long id) throws UserNotFoundException {
+        return Optional.ofNullable(userRepository.findById(id)
+                .orElseThrow(() -> UserNotFoundException.createWith(id)));
+    }
+
+    public Optional<User> deleteUser(Long id) throws UserNotFoundException {
+        Optional<User> user = getUser(id);
+        userRepository.deleteById(id);
+        return user;
+    }
+
+    public Optional<User> updateUser(User newUser, Long id) throws UserNotFoundException {
+        return Optional.ofNullable(userRepository.findById(id)
+                .map(oldUser -> {
+                    oldUser.setName(newUser.getName());
+                    oldUser.setSurname(newUser.getSurname());
+                    oldUser.setGender(newUser.getGender());
+                    oldUser.setDate(newUser.getDate());
+                    return userRepository.save(oldUser);
+                })
+                .orElseThrow(() -> UserNotFoundException.createWith(id)));
+    }
 }
 
 
