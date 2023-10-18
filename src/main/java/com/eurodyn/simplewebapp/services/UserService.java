@@ -40,6 +40,16 @@ public class UserService {
                     oldUser.setSurname(newUser.getSurname());
                     oldUser.setGender(newUser.getGender());
                     oldUser.setDate(newUser.getDate());
+
+                    if (newUser.getAddress() != null) {
+                        if (oldUser.getAddress() != null) {
+                            oldUser.getAddress().setWorkAddress(newUser.getAddress().getWorkAddress());
+                            oldUser.getAddress().setHomeAddress(newUser.getAddress().getHomeAddress());
+                        }
+                        else
+                            oldUser.setAddress(newUser.getAddress());
+                    }
+
                     return userRepository.save(oldUser);
                 })
                 .orElseThrow(() -> UserNotFoundException.createWith(id)));

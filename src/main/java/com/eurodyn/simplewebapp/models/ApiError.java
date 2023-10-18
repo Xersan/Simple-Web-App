@@ -5,10 +5,9 @@ import lombok.Setter;
 
 import java.util.List;
 
-
+@Getter @Setter
 public class ApiError {
 
-    @Getter @Setter
     private List<String> errors;
 
     public ApiError(List<String> errors) {

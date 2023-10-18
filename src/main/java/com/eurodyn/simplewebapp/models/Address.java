@@ -14,9 +14,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Size(min = 2, max = 250, message = "Address must be between 2 and 250 characters.")
+    @Size(max = 250, message = "Address must be 250 characters max.")
     private String workAddress;
 
-    @Size(min = 2, max = 250, message = "Address must be between 2 and 250 characters.")
+    @Size(max = 250, message = "Address must be 250 characters max.")
     private String homeAddress;
 }
