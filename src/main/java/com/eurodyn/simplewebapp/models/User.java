@@ -1,13 +1,15 @@
 package com.eurodyn.simplewebapp.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
 @Getter @Setter
+@Table(name = "users")
 public class User {
 
     @Id
@@ -30,4 +32,11 @@ public class User {
     @Size(max = 250, message = "Date error: Too many characters.")
     private String date;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_address",
+            joinColumns =
+                    { @JoinColumn(name = "user_id", referencedColumnName = "id") },
+            inverseJoinColumns =
+                    { @JoinColumn(name = "address_id", referencedColumnName = "id") })
+    private Address address;
 }

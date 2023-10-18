@@ -18,14 +18,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(path="/add")
-    public @ResponseBody ResponseEntity<User> addNewUser(@Valid @RequestBody User user) {
-        return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
-    }
-
     @GetMapping(path="/all")
     public @ResponseBody ResponseEntity<Iterable<User>> getAllUsers() {
         return new ResponseEntity<>(userService.allUsers(), HttpStatus.OK);
+    }
+
+    @PostMapping(path="/add")
+    public @ResponseBody ResponseEntity<User> addNewUser(@Valid @RequestBody User user) {
+        return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/user/{id}")
@@ -41,8 +41,9 @@ public class UserController {
     }
 
     @PutMapping(path = "/user/{id}")
-    public @ResponseBody ResponseEntity<Optional<User>> updateUserById(@Valid @RequestBody User user, @PathVariable Long id)
-                                                                                    throws UserNotFoundException {
+    public @ResponseBody ResponseEntity<Optional<User>> updateUserById(@Valid @RequestBody User user,
+                                                                       @PathVariable Long id)
+                                                                       throws UserNotFoundException {
         return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
     }
 
