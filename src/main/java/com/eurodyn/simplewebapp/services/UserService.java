@@ -14,12 +14,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Iterable<User> allUsers() {
+    public Iterable<User> getAllUsers() {
         return userRepository.findAll();
-    }
-
-    public User addUser(User user) {
-        return userRepository.save(user);
     }
 
     public Optional<User> getUser(Long id) throws UserNotFoundException {
@@ -27,10 +23,8 @@ public class UserService {
                 .orElseThrow(() -> UserNotFoundException.createWith(id)));
     }
 
-    public Optional<User> deleteUser(Long id) throws UserNotFoundException {
-        Optional<User> user = getUser(id);
-        userRepository.deleteById(id);
-        return user;
+    public User addUser(User user) {
+        return userRepository.save(user);
     }
 
     public Optional<User> updateUser(User newUser, Long id) throws UserNotFoundException {
@@ -53,6 +47,16 @@ public class UserService {
                     return userRepository.save(oldUser);
                 })
                 .orElseThrow(() -> UserNotFoundException.createWith(id)));
+    }
+
+    public Optional<User> deleteUser(Long id) throws UserNotFoundException {
+        Optional<User> user = getUser(id);
+        userRepository.deleteById(id);
+        return user;
+    }
+
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
     }
 }
 

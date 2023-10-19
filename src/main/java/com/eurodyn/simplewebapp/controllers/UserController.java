@@ -20,7 +20,13 @@ public class UserController {
 
     @GetMapping(path="/all")
     public @ResponseBody ResponseEntity<Iterable<User>> getAllUsers() {
-        return new ResponseEntity<>(userService.allUsers(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/user/{id}")
+    public @ResponseBody ResponseEntity<Optional<User>> getUserById(@PathVariable Long id)
+            throws UserNotFoundException {
+        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
     @PostMapping(path="/add")
@@ -28,10 +34,11 @@ public class UserController {
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/user/{id}")
-    public @ResponseBody ResponseEntity<Optional<User>> getUserById(@PathVariable Long id)
-                                                                    throws UserNotFoundException {
-        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+    @PutMapping(path = "/user/{id}")
+    public @ResponseBody ResponseEntity<Optional<User>> updateUserById(@Valid @RequestBody User user,
+                                                                       @PathVariable Long id)
+            throws UserNotFoundException {
+        return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/user/{id}")
@@ -40,11 +47,9 @@ public class UserController {
         return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
     }
 
-    @PutMapping(path = "/user/{id}")
-    public @ResponseBody ResponseEntity<Optional<User>> updateUserById(@Valid @RequestBody User user,
-                                                                       @PathVariable Long id)
-                                                                       throws UserNotFoundException {
-        return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
+    @DeleteMapping(path = "/deleteall")
+    public @ResponseBody ResponseEntity<String> deleteAllUsers() {
+        userService.deleteAllUsers();
+        return new ResponseEntity<>("Deleted all users", HttpStatus.OK);
     }
-
 }

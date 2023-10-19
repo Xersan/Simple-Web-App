@@ -10,6 +10,24 @@ $(document).ready(function () {
         $("#register-form").show(350);
     });
 
+    $(document).on("click", "#delete-all", function () {
+        if(confirm("DELETE ALL USERS?"))
+            $.ajax({
+                type: 'DELETE',
+                url: "/api/v1/users/deleteall",
+                success: function (result) {
+                    console.log(result);
+                    $("#error-alert").hide();
+                    $("#success-alert").show();
+                },
+                error: function (e) {
+                    console.log(e);
+                    $("#success-alert").hide();
+                    $("#error-alert").show();
+                }
+            });
+    });
+
     $(document).on("click", "#display-users", function () {
         let jsonString = {};
 
