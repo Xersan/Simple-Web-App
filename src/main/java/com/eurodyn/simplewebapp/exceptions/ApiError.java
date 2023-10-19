@@ -1,4 +1,4 @@
-package com.eurodyn.simplewebapp.models;
+package com.eurodyn.simplewebapp.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;
