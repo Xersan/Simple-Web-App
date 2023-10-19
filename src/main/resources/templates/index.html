@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Web Application - Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="/static/libraries/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/flatpickr.min.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12"> &nbsp;
+            <h3 class="text-center">
+                Simple Web Application
+            </h3>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Display Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register new user</a>
+                </li>
+            </ul> &nbsp;
+            <div class="row">
+                <div class="col-md-4">
+                    <form role="form">
+                        <div class="form-group">
+                            <p>
+                            <label for="exampleInputName">
+                                Name<span class="star">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="exampleInputName" required>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                            <label for="exampleInputSurname">
+                                Surname<span class="star">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="exampleInputSurname" required>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                            <label for="exampleInputGender">
+                                Gender<span class="star">*</span>
+                            </label>
+                            <select name="gender" id="exampleInputGender">
+                                <option value="M" selected>M</option>
+                                <option value="F">F</option>
+                            </select>
+                            </p>
+                        </div>
+                        <div class="form-group">
+
+                            <p>
+                                <label for="exampleInputDate">
+                                    Date<span class="star">*</span>
+                                </label>
+                                <input type="date" required class="form-control" id="exampleInputDate">
+                            </p>
+                        </div>
+                        <div class="form-group">
+
+                            <p>
+                                <label for="exampleInputWorkAddress">
+                                    Work Address
+                                </label>
+                                <input type="text" class="form-control" id="exampleInputWorkAddress">
+                            </p>
+                        </div>
+                        <div class="form-group">
+
+                            <p>
+                                <label for="exampleInputHomeAddress">
+                                    Home Address
+                                </label>
+                                <input type="text" class="form-control" id="exampleInputHomeAddress">
+                            </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                        <button type="reset" class="btn btn-primary">
+                            Clear form
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Payment Taken
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Default
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Approved
+                    </td>
+                </tr>
+                <tr class="table-success">
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        02/04/2012
+                    </td>
+                    <td>
+                        Declined
+                    </td>
+                </tr>
+                <tr class="table-warning">
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        03/04/2012
+                    </td>
+                    <td>
+                        Pending
+                    </td>
+                </tr>
+                <tr class="table-danger">
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        04/04/2012
+                    </td>
+                    <td>
+                        Call in to confirm
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/static/plugins/flatpickr.js"></script>
+<script>
+    flatpickr("input[type=date]", {enableTime: false, dateFormat : "d/m/Y"});
+</script>
+<script src="/static/js/site.js"></script>
+</body>
+</html>
