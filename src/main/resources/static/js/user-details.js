@@ -2,6 +2,8 @@ $(document).ready(function () {
     console.log("ready");
 
     $("#update-form").hide();
+    $("#success-alert").hide();
+    $("#error-alert").hide();
 
     let url_params = new URLSearchParams(window.location.search);
     let userId = url_params.get('user');
@@ -31,7 +33,7 @@ $(document).ready(function () {
                 $("#input-home-address").val(data.address.homeAddress)
             }
 
-            let table = new Tabulator("#user-details", {
+            new Tabulator("#user-details", {
                 data:Array.of(data),
                 movableColumns:false,
                 layout:"fitDataFill",
@@ -60,11 +62,9 @@ $(document).ready(function () {
         obj.date = $("#input-date").val();
         let workAddress = $("#input-work-address").val();
         let homeAddress = $("#input-home-address").val();
-        if (!(workAddress === "" && homeAddress === "")) {
-            obj2.workAddress = workAddress;
-            obj2.homeAddress = homeAddress;
-            obj.address = obj2;
-        }
+        obj2.workAddress = workAddress;
+        obj2.homeAddress = homeAddress;
+        obj.address = obj2;
 
         let jsonString = JSON.stringify(obj);
         console.log("jsonstring", jsonString);
@@ -77,11 +77,35 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
+                $("#error-alert").hide();
+                $("#success-alert").show();
             },
             error: function (e) {
                 console.log(e);
+                $("#success-alert").hide();
+                $("#error-alert").show();
             }
         });
 
+    });
+
+    $("#delete-user").click(function () {
+        $.ajax({
+            type: 'DELETE',
+            url: "/api/v1/users/user/" + userId,
+            contentType: 'application/json',
+            data: jsonString,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $("#error-alert").hide();
+                $("#success-alert").show();
+            },
+            error: function (e) {
+                console.log(e);
+                $("#success-alert").hide();
+                $("#error-alert").show();
+            }
+        });
     });
 });
