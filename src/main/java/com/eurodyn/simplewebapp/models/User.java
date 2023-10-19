@@ -29,7 +29,7 @@ public class User {
     private String gender;
 
     @NotNull(message = "No date provided.")
-    @Size(max = 250, message = "Date error: Too many characters.")
+    @Size(min = 10, max = 250, message = "Incorrect date.")
     private String date;
 
     @OneToOne(cascade = CascadeType.ALL)

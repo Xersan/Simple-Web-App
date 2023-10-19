@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Web Application - User details page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="../css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/flatpickr.min.css">
     <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="../css/tabulator.min.css" rel="stylesheet">
 </head>
@@ -33,26 +33,24 @@
                         <form role="form" id="update-form">
                             <div class="form-group">
                                 <p>
-                                    <label for="input-name">
-                                        Name<span class="star">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" id="input-name" required>
+                                <label for="input-name">Name<span class="star">*</span></label>
+                                <input type="text" class="form-control" id="input-name" minlength="2" maxlength="250"
+                                       required>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-surname">
-                                        Surname<span class="star">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" id="input-surname" required>
+                                <label for="input-surname">
+                                    Surname<span class="star">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="input-surname" minlength="2" maxlength="250"
+                                       required>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-gender">
-                                        Gender<span class="star">*</span>
-                                    </label>
-                                    <select name="gender" id="input-gender">
+                                    <label for="input-gender">Gender<span class="star">*</span></label>
+                                    <select class="form-control" id="input-gender">
                                         <option value="M" selected>M</option>
                                         <option value="F">F</option>
                                     </select>
@@ -60,50 +58,38 @@
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-date">
-                                        Date<span class="star">*</span>
-                                    </label>
-                                    <input type="date" required class="form-control" id="input-date">
+                                    <label for="input-date">Date<span class="star">*</span></label>
+                                    <input type="date" required class="form-control" id="input-date" maxlength="250">
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-work-address">
-                                        Work Address
-                                    </label>
-                                    <input type="text" class="form-control" id="input-work-address">
+                                    <label for="input-work-address">Work Address</label>
+                                    <input type="text" class="form-control" id="input-work-address" maxlength="250">
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-home-address">
-                                        Home Address
-                                    </label>
-                                    <input type="text" class="form-control" id="input-home-address">
+                                    <label for="input-home-address">Home Address</label>
+                                    <input type="text" class="form-control" id="input-home-address" maxlength="250">
                                 </p>
                             </div>
                             <p>
-                                <button type="submit" class="btn btn-primary" id="submit-form">
-                                    Update
-                                </button>
-                                <button type="reset" class="btn btn-primary">
-                                    Clear form
-                                </button>
+                                <button type="submit" class="btn btn-primary" id="submit-form">Update</button>
+                                <button type="reset" class="btn btn-secondary">Clear form</button>
                             </p>
                         </form>
+                        <div class="alert alert-success" role="alert" id="success-alert">Success</div>
+                        <div class="alert alert-danger" role="alert" id="error-alert">Error</div>
                     </div>
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
                 </div>
             </div>
         </div>
     </div>
     <script src="../js/flatpickr.js"></script>
-    <script>
-        flatpickr("input[type=date]", {enableTime: false, dateFormat : "d/m/Y"});
-    </script>
+    <script>flatpickr("input[type=date]", {enableTime: false, dateFormat : "d/m/Y"})</script>
     <script type="text/javascript" src="../js/tabulator.min.js"></script>
     <script src="../js/user-details.js"></script>
 </body>
