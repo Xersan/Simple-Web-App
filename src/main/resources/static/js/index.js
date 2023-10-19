@@ -2,7 +2,7 @@ $(document).ready(function () {
     console.log("ready");
 
     $("#register-form").hide();
-    $("#users-table").hide();
+    //$("#users-table").hide();
 
     $(document).on("click", "#display-form", function () {
         $("#register-form").show(350);
@@ -30,10 +30,10 @@ $(document).ready(function () {
                     ],
                 });
 
-                $("#users-table").show(500);
+                //$("#users-table").show(500);
 
                 table.on("rowClick", function(e, row){
-                    alert("Row " + row.getData().id + " Clicked!!!!");
+                    window.open("html/user-details.html?user=" + row.getData().id, '_blank');
                 });
             },
             error: function (e) {
@@ -52,8 +52,7 @@ $(document).ready(function () {
         obj.date = $("#input-date").val();
         let workAddress = $("#input-work-address").val();
         let homeAddress = $("#input-home-address").val();
-        if (!(workAddress === "" && homeAddress === ""))
-        {
+        if (!(workAddress === "" && homeAddress === "")) {
             obj2.workAddress = workAddress;
             obj2.homeAddress = homeAddress;
             obj.address = obj2;
