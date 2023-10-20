@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log("ready");
+    //console.log("ready");
 
     $("#register-form").hide();
     $("#users-table").hide();
@@ -15,15 +15,15 @@ $(document).ready(function () {
             $.ajax({
                 type: 'DELETE',
                 url: "/api/v1/users/deleteall",
-                success: function (result) {
-                    console.log(result);
-                    $("#error-alert").hide();
-                    $("#success-alert").show();
+                success: function (e) {
+                    //console.log(e);
+                    $("#error-alert").hide(350);
+                    $("#success-alert").text("Deleted all users.").show(350);
                 },
                 error: function (e) {
-                    console.log(e);
-                    $("#success-alert").hide();
-                    $("#error-alert").show();
+                    //console.log(e);
+                    $("#success-alert").hide(350);
+                    $("#error-alert").show(350);
                 }
             });
     });
@@ -38,7 +38,7 @@ $(document).ready(function () {
             data: jsonString,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
+                //console.log(data);
 
                 let table = new Tabulator("#users-table", {
                     data:data,
@@ -57,7 +57,7 @@ $(document).ready(function () {
                 });
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
             }
         });
     });
@@ -79,7 +79,7 @@ $(document).ready(function () {
         }
 
         let jsonString = JSON.stringify(obj);
-        console.log("jsonstring", jsonString);
+        //console.log("jsonstring", jsonString);
 
         $.ajax({
             type: 'POST',
@@ -87,15 +87,16 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: jsonString,
             dataType: 'json',
-            success: function (data) {
-                console.log(data);
-                $("#error-alert").hide();
-                $("#success-alert").show();
+            success: function (e) {
+                //console.log(e);
+                $("#error-alert").hide(350);
+                $("#success-alert").text("User registered.").show(350);
             },
             error: function (e) {
-                console.log(e);
-                $("#success-alert").hide();
-                $("#error-alert").show();
+                let errorText = e.responseText;
+                errorText = errorText.substring(errorText.lastIndexOf('[') + 1, errorText.length);
+                $("#error-alert").text(errorText.substring(0, errorText.indexOf(']'))).show(350);
+                $("#success-alert").hide(350);
             }
         });
 

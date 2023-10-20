@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log("ready");
+    //console.log("ready");
 
     $("#update-form").hide();
     $("#success-alert").hide();
@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     let url_params = new URLSearchParams(window.location.search);
     let userId = url_params.get('user');
-    console.log(userId);
+    //console.log(userId);
 
     $(document).on("click", "#display-form", function () {
         $("#update-form").show(350);
@@ -22,7 +22,7 @@ $(document).ready(function () {
         data: jsonString,
         dataType: 'json',
         success: function (data) {
-            console.log(data);
+            //console.log(e);
 
             $("#input-name").val(data.name);
             $("#input-surname").val(data.surname);
@@ -48,7 +48,7 @@ $(document).ready(function () {
             });
         },
         error: function (e) {
-            console.log(e);
+            //console.log(e);
         }
     });
 
@@ -67,7 +67,7 @@ $(document).ready(function () {
         obj.address = obj2;
 
         let jsonString = JSON.stringify(obj);
-        console.log("jsonstring", jsonString);
+        //console.log("jsonstring", jsonString);
 
         $.ajax({
             type: 'PUT',
@@ -75,15 +75,20 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: jsonString,
             dataType: 'json',
-            success: function (data) {
-                console.log(data);
+            success: function (e) {
+                //console.log(e);
                 $("#error-alert").hide();
-                $("#success-alert").show();
+                $("#success-alert").text("User updated.").show(350);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e)
+                let errorText = e.responseText;
+                errorText = errorText.substring(errorText.lastIndexOf('[') + 1, errorText.length);
+                errorText = errorText.substring(0, errorText.indexOf(']'));
+                if (errorText[0] === "\"")
+                    errorText = errorText.substring(1, errorText.length - 1);
+                $("#error-alert").text(errorText).show(350);
                 $("#success-alert").hide();
-                $("#error-alert").show();
             }
         });
 
@@ -96,15 +101,17 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: jsonString,
             dataType: 'json',
-            success: function (data) {
-                console.log(data);
+            success: function (e) {
+                //console.log(e);
                 $("#error-alert").hide();
-                $("#success-alert").show();
+                $("#success-alert").text("User deleted.").show(350);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
+                let errorText = e.responseText;
+                errorText = errorText.substring(errorText.lastIndexOf('[') + 2, errorText.length);
+                $("#error-alert").text(errorText.substring(0, errorText.indexOf(']') - 1)).show(350);
                 $("#success-alert").hide();
-                $("#error-alert").show();
             }
         });
     });
