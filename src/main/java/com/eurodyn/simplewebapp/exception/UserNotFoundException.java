@@ -1,9 +1,8 @@
-package com.eurodyn.simplewebapp.exceptions;
-
+package com.eurodyn.simplewebapp.exception;
 
 public class UserNotFoundException extends Exception {
 
-    private Long id;
+    private final Long id;
 
     public static UserNotFoundException createWith(Long id) {
         return new UserNotFoundException(id);
@@ -15,6 +14,7 @@ public class UserNotFoundException extends Exception {
 
     @Override
     public String getMessage() {
-        return "User with id '" + id + "' not found";
+        return "User with id '" + id + "' not found.";
     }
+
 }

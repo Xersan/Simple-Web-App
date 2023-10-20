@@ -1,4 +1,4 @@
-package com.eurodyn.simplewebapp.models;
+package com.eurodyn.simplewebapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -15,10 +15,11 @@ public class Address {
     private Long id;
 
     @Column(name = "work_address")
-    @Size(max = 250, message = "Address must be 250 characters max.")
+    @Size(max = 250, message = "Address must be max 250 characters.")
     private String workAddress;
 
     @Column(name = "home_address")
-    @Size(max = 250, message = "Address must be 250 characters max.")
+    @Size(max = 250, message = "Address must be max 250 characters.")
     private String homeAddress;
+
 }

@@ -1,8 +1,8 @@
-package com.eurodyn.simplewebapp.services;
+package com.eurodyn.simplewebapp.service;
 
-import com.eurodyn.simplewebapp.exceptions.UserNotFoundException;
-import com.eurodyn.simplewebapp.models.User;
-import com.eurodyn.simplewebapp.repositories.UserRepository;
+import com.eurodyn.simplewebapp.exception.UserNotFoundException;
+import com.eurodyn.simplewebapp.model.User;
+import com.eurodyn.simplewebapp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,8 +21,7 @@ public class UserService {
     }
 
     public Optional<User> getUser(Long id) throws UserNotFoundException {
-        return Optional.ofNullable(userRepository.findById(id)
-                .orElseThrow(() -> UserNotFoundException.createWith(id)));
+        return Optional.ofNullable(userRepository.findById(id).orElseThrow(() -> UserNotFoundException.createWith(id)));
     }
 
     public User addUser(User user) {
@@ -57,9 +56,10 @@ public class UserService {
         return user;
     }
 
-    public void deleteAllUsers() {
+    @SuppressWarnings("SameReturnValue")
+    public String deleteAllUsers() {
         userRepository.deleteAll();
+        return "Deleted all users";
     }
+
 }
-
-

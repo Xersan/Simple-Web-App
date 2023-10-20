@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Simple Web Application - Homepage</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/tabulator.min.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12"> &nbsp;
-                <h3 class="text-center">
-                    Simple Web Application
-                </h3>
+            <div class="col-md-12">
+                <br>
+                <h3 class="text-center">Simple Web Application</h3>
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="#" id="display-users">Display Users</a>
@@ -29,36 +29,37 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="delete-all">Delete all users</a>
                     </li>
-                </ul> &nbsp;
+                </ul>
+                <br>
                 <div class="row">
                     <div class="col-md-4">
                         <form role="form" id="register-form">
                             <div class="form-group">
                                 <p>
-                                <label for="input-name">Name<span class="star">*</span></label>
-                                <input type="text" class="form-control" id="input-name" minlength="2" maxlength="250"
-                                       required>
+                                    <label for="input-name">Name <span class="star">*</span></label>
+                                    <input type="text" class="form-control" id="input-name" minlength="2"
+                                        maxlength="250" required>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                <label for="input-surname">Surname<span class="star">*</span></label>
-                                <input type="text" class="form-control" id="input-surname" minlength="2" maxlength="250"
-                                       required>
+                                    <label for="input-surname">Surname <span class="star">*</span></label>
+                                    <input type="text" class="form-control" id="input-surname" minlength="2"
+                                        maxlength="250" required>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                <label for="input-gender">Gender<span class="star">*</span></label>
-                                <select class="form-control" id="input-gender">
-                                    <option value="M" selected>M</option>
-                                    <option value="F">F</option>
-                                </select>
+                                    <label for="input-gender">Gender <span class="star">*</span></label>
+                                    <select class="form-control" id="input-gender">
+                                        <option value="M" selected>M</option>
+                                        <option value="F">F</option>
+                                    </select>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
-                                    <label for="input-date">Date<span class="star">*</span></label>
+                                    <label for="input-date">Date <span class="star">*</span></label>
                                     <input type="date" required class="form-control" id="input-date" maxlength="250">
                                 </p>
                             </div>
@@ -75,23 +76,23 @@
                                 </p>
                             </div>
                             <p>
-                            <button type="submit" class="btn btn-primary" id="submit-form">Register</button>
-                            <button type="reset" class="btn btn-secondary">Clear form</button>
+                                <button type="submit" class="btn btn-primary" id="submit-form">Register</button>
+                                <button type="reset" class="btn btn-secondary">Clear form</button>
                             </p>
                         </form>
                         <div class="alert alert-success" role="alert" id="success-alert">Success</div>
                         <div class="alert alert-danger" role="alert" id="error-alert">Error</div>
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
                 </div>
-                <div id="users-table"></div> &nbsp; &nbsp;
+                <div id="users-table"></div>
+                <br>
             </div>
         </div>
     </div>
     <script src="js/flatpickr.js"></script>
-    <script>flatpickr("input[type=date]", {enableTime: false, dateFormat : "d/m/Y"})</script>
+    <script>flatpickr("input[type=date]", { enableTime: false, dateFormat: "d/m/Y" })</script>
     <script type="text/javascript" src="js/tabulator.min.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-package com.eurodyn.simplewebapp.exceptions;
+package com.eurodyn.simplewebapp.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,6 @@ import org.springframework.web.util.WebUtils;
 
 import java.util.Collections;
 import java.util.List;
-
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -32,14 +31,15 @@ public class GlobalExceptionHandler {
             HttpStatus status = HttpStatus.NOT_FOUND;
 
             return handleUserNotFoundException(unfe, headers, status, request);
-        } else if (ex instanceof MethodArgumentNotValidException manve){
+        }
+        else if (ex instanceof MethodArgumentNotValidException manve) {
             HttpStatus status = HttpStatus.BAD_REQUEST;
 
             return handleMethodArgumentNotValidException(manve, headers, status, request);
-        } else {
-            if (LOGGER.isWarnEnabled()) {
+        }
+        else {
+            if (LOGGER.isWarnEnabled())
                 LOGGER.warn("Unknown exception type: " + ex.getClass().getName());
-            }
 
             HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
             return handleExceptionInternal(ex, null, headers, status, request);
@@ -63,9 +63,8 @@ public class GlobalExceptionHandler {
     protected ResponseEntity<ApiError> handleExceptionInternal(Exception ex, @Nullable ApiError body,
                                                                HttpHeaders headers, HttpStatus status,
                                                                WebRequest request) {
-        if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
+        if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status))
             request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);
-        }
 
         return new ResponseEntity<>(body, headers, status);
     }

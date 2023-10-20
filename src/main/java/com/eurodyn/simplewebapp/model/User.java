@@ -1,11 +1,10 @@
-package com.eurodyn.simplewebapp.models;
+package com.eurodyn.simplewebapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Entity
 @Getter @Setter
@@ -29,7 +28,7 @@ public class User {
     private String gender;
 
     @NotNull(message = "No date provided.")
-    @Size(min = 10, max = 250, message = "Incorrect date.")
+    @Size(min = 10, max = 10, message = "Incorrect date.")
     private String date;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -39,4 +38,5 @@ public class User {
             inverseJoinColumns =
                     { @JoinColumn(name = "address_id", referencedColumnName = "id") })
     private Address address;
+
 }
