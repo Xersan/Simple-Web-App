@@ -4,7 +4,6 @@ import com.eurodyn.simplewebapp.exceptions.UserNotFoundException;
 import com.eurodyn.simplewebapp.models.User;
 import com.eurodyn.simplewebapp.services.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +14,11 @@ import java.util.Optional;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(path="/all")
     public @ResponseBody ResponseEntity<Iterable<User>> getAllUsers() {

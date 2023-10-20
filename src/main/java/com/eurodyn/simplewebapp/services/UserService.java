@@ -3,7 +3,6 @@ package com.eurodyn.simplewebapp.services;
 import com.eurodyn.simplewebapp.exceptions.UserNotFoundException;
 import com.eurodyn.simplewebapp.models.User;
 import com.eurodyn.simplewebapp.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
