@@ -49,6 +49,9 @@ $(document).ready(function () {
         },
         error: function (e) {
             //console.log(e);
+            let errorText = e.responseText;
+            errorText = errorText.substring(errorText.lastIndexOf('[') + 2, errorText.length);
+            $("#error-alert").text(errorText.substring(0, errorText.indexOf(']') - 1)).show(350);
         }
     });
 
@@ -114,5 +117,8 @@ $(document).ready(function () {
                 $("#success-alert").hide();
             }
         });
+
+        $("#delete-user-modal").modal('hide');
     });
+
 });

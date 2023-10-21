@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simple Web Application - Homepage</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -17,6 +18,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <div class="modal fade" id="delete-all-users-modal" tabindex="-1" aria-labelledby="modal-label"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-label">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">Permanently delete all users?</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="delete-all">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <h3 class="text-center">Simple Web Application</h3>
                 <ul class="nav">
@@ -27,7 +45,8 @@
                         <a class="nav-link" href="#" id="display-form">Register new user</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="delete-all">Delete all users</a>
+                        <a class="nav-link" href="#" id="delete-all-prompt" data-bs-toggle="modal"
+                            data-bs-target="#delete-all-users-modal">Delete all users</a>
                     </li>
                 </ul>
                 <br>
@@ -89,10 +108,11 @@
             </div>
         </div>
     </div>
-    <script src="js/flatpickr.js"></script>
+    <script type="text/javascript" src="js/flatpickr.js"></script>
     <script>flatpickr("input[type=date]", { enableTime: false, dateFormat: "d/m/Y" })</script>
     <script type="text/javascript" src="js/tabulator.min.js"></script>
-    <script src="js/index.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>

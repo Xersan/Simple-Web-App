@@ -10,24 +10,6 @@ $(document).ready(function () {
         $("#register-form").show(350);
     });
 
-    $(document).on("click", "#delete-all", function () {
-        if(confirm("DELETE ALL USERS?"))
-            $.ajax({
-                type: 'DELETE',
-                url: "/api/v1/users/deleteall",
-                success: function (e) {
-                    //console.log(e);
-                    $("#error-alert").hide(350);
-                    $("#success-alert").text("Deleted all users.").show(350);
-                },
-                error: function (e) {
-                    //console.log(e);
-                    $("#success-alert").hide(350);
-                    $("#error-alert").show(350);
-                }
-            });
-    });
-
     $(document).on("click", "#display-users", function () {
         let jsonString = {};
 
@@ -100,6 +82,25 @@ $(document).ready(function () {
             }
         });
 
+    });
+
+    $(document).on("click", "#delete-all", function () {
+        $.ajax({
+            type: 'DELETE',
+            url: "/api/v1/users/deleteall",
+            success: function (e) {
+                //console.log(e);
+                $("#error-alert").hide(350);
+                $("#success-alert").text("Deleted all users.").show(350);
+            },
+            error: function (e) {
+                //console.log(e);
+                $("#success-alert").hide(350);
+                $("#error-alert").show(350);
+            }
+        });
+
+        $("#delete-all-users-modal").modal('hide');
     });
 
 })
