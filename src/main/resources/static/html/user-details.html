@@ -35,7 +35,6 @@
                         </div>
                     </div>
                 </div>
-                <br>
                 <h3 class="text-center">User details</h3>
                 <ul class="nav">
                     <li class="nav-item">
@@ -53,51 +52,39 @@
                     <div class="col-md-4">
                         <form role="form" id="update-form">
                             <div class="form-group">
-                                <p>
-                                    <label for="input-name">Name <span class="star">*</span></label>
-                                    <input type="text" class="form-control" id="input-name" minlength="2"
-                                        maxlength="250" required>
-                                </p>
+                                <label for="input-name">Name <span class="star">*</span></label>
+                                <input type="text" class="form-control" id="input-name" minlength="2" maxlength="250"
+                                    required>
                             </div>
                             <div class="form-group">
-                                <p>
-                                    <label for="input-surname">Surname <span class="star">*</span></label>
-                                    <input type="text" class="form-control" id="input-surname" minlength="2"
-                                        maxlength="250" required>
-                                </p>
+                                <label for="input-surname">Surname <span class="star">*</span></label>
+                                <input type="text" class="form-control" id="input-surname" minlength="2" maxlength="250"
+                                    required>
                             </div>
                             <div class="form-group">
-                                <p>
-                                    <label for="input-gender">Gender <span class="star">*</span></label>
-                                    <select class="form-control" id="input-gender">
-                                        <option value="M" selected>M</option>
-                                        <option value="F">F</option>
-                                    </select>
-                                </p>
+                                <label for="input-gender">Gender <span class="star">*</span></label>
+                                <select class="form-control" id="input-gender">
+                                    <option value="M" selected>M</option>
+                                    <option value="F">F</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <p>
-                                    <label for="input-date">Date <span class="star">*</span></label>
-                                    <input type="date" required class="form-control" id="input-date" maxlength="250">
-                                </p>
+                                <label for="input-date">Date <span class="star">*</span></label>
+                                <input type="date" class="form-control" id="input-date" maxlength="10" required>
                             </div>
                             <div class="form-group">
-                                <p>
-                                    <label for="input-work-address">Work Address</label>
-                                    <input type="text" class="form-control" id="input-work-address" maxlength="250">
-                                </p>
+                                <label for="input-work-address">Work Address</label>
+                                <input type="text" class="form-control" id="input-work-address" maxlength="250">
                             </div>
                             <div class="form-group">
-                                <p>
-                                    <label for="input-home-address">Home Address</label>
-                                    <input type="text" class="form-control" id="input-home-address" maxlength="250">
-                                </p>
+                                <label for="input-home-address">Home Address</label>
+                                <input type="text" class="form-control" id="input-home-address" maxlength="250">
                             </div>
-                            <p>
-                                <button type="submit" class="btn btn-primary" id="submit-form">Update</button>
-                                <button type="reset" class="btn btn-secondary">Clear form</button>
-                            </p>
+                            <br>
+                            <button type="submit" class="btn btn-primary" id="submit-form">Update</button>
+                            <button type="reset" class="btn btn-secondary">Clear form</button>
                         </form>
+                        <br>
                         <div class="alert alert-success" role="alert" id="success-alert">Success</div>
                         <div class="alert alert-danger" role="alert" id="error-alert">Error</div>
                     </div>
